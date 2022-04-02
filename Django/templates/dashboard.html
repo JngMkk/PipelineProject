@@ -12,26 +12,26 @@
 <script>
     $( document ).ready(function() {
         $('#sis').html('{{si}}')
-        var bPer = parseInt('{{ bPer }}')
-        var cPer = parseInt('{{ cPer }}')
-        var md = parseInt('{{ md }}')
-        var nd = parseInt('{{ nd }}')
-        var ou = parseInt('{{ ou }}')
-        var io = parseInt('{{ io }}')
-        var cv1 = parseInt('{{ cv1 }}')
-        var cv2 = parseInt('{{ cv2 }}')
-        var cv3 = parseInt('{{ cv3 }}')
-        var cv4 = parseInt('{{ cv4 }}')
-        var cv5 = parseInt('{{ cv5 }}')
-        var flov1 = parseInt('{{ flov1 }}');
-        var flov2 = parseInt('{{ flov2 }}')
-        var flov3 = parseInt('{{ flov3 }}')
-        var flov4 = parseInt('{{ flov4 }}')
-        var c1 =String('{{c1}}')
-        var c2 =String('{{c2}}')
-        var c3 =String('{{c3}}')
-        var c4 =String('{{c4}}')
-        var c5 =String('{{c5}}')
+        var min_ratio = parseInt('{{ min_ratio }}')
+        var gong_ratio = parseInt('{{ gong_ratio }}')
+        var duty_count = parseInt('{{ duty_count }}')
+        var nonduty_count = parseInt('{{ nonduty_count }}')
+        var out_count = parseInt('{{ out_count }}')
+        var in_count = parseInt('{{ in_count }}')
+        var place_top1 = parseInt('{{ place_top1 }}')
+        var place_top2 = parseInt('{{ place_top2 }}')
+        var place_top3 = parseInt('{{ place_top3 }}')
+        var place_top4 = parseInt('{{ place_top4 }}')
+        var place_top5 = parseInt('{{ place_top5 }}')
+        var flo_count1 = parseInt('{{ flo_count1 }}');
+        var flo_count2 = parseInt('{{ flo_count2 }}')
+        var flo_count3 = parseInt('{{ flo_count3 }}')
+        var flo_count4 = parseInt('{{ flo_count4 }}')
+        var place1 =String('{{place1}}')
+        var place2 =String('{{place2}}')
+        var place3 =String('{{place3}}')
+        var place4 =String('{{place4}}')
+        var place5 =String('{{place5}}')
         var flo1 =String('{{flo1}}')
         var flo2 =String('{{flo2}}')
         var flo3 =String('{{flo3}}')
@@ -44,138 +44,129 @@
            labels: ["민간 비율 %", "공공 비율 %"],
            datasets: [{
                label: ' 단체별',
-               data: [bPer, cPer],
-               backgroundColor: [
-               'rgba(54, 162, 235, 1)',
-                                   'rgba(255, 99, 132, 1)'
-               ],
-           }]
-           },
-        })
+               data: [min_ratio, gong_ratio],
+               backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+            }]
+        },
+    })
         var ctx2 = document.getElementById("myChart2");
            var myChart = new Chart(ctx2, {
-           type: 'bar',
-           data: {
-           labels: ["실내","실외"],
+               type: 'bar',
+               data: {
+                   labels: ["실내","실외"],
            datasets: [{
-           label: '실내외',
-           data: [io,ou],
-           backgroundColor: [
-           'rgba(255, 100, 132, 0.2)',
-           'rgba(255, 200, 86, 0.2)'
-           ],
-           }]
-           },
+               label: '실내외',
+               data: [in_count,out_count],
+               backgroundColor: ['rgba(255, 100, 132, 0.2)', 'rgba(255, 200, 86, 0.2)'],
+            }]
+        },
    })
-
    var ctx3 = document.getElementById("myChart3");
    var myChart = new Chart(ctx3, {
-   type: 'bar',
-   data: {
-                   labels: ["의무시설","비의무시설"],
+       type: 'bar',
+       data: {
+           labels: ["의무시설","비의무시설"],
            datasets: [{
                    label: '의무성',
-                   data: [md,nd],
-                   backgroundColor: [
-                   'rgba(255, 99, 132, 0.2)',
-                   'rgba(255, 205, 86, 0.2)'
-                   ],
-           }]
-   },
-   })
-   var ctx4 = document.getElementById("myChart4");
-   var myChart = new Chart(ctx4, {
-           type: 'polarArea',
-           data: {
-                   labels:[c1,c2,c3,c4,c5],
-                   datasets: [{
-                   label: ["인기놀이 시설"],
-                   data: [cv1,cv2,cv3,cv4,cv5],
-                   backgroundColor: [
+                   data: [duty_count,nonduty_count],
+                   backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(255, 205, 86, 0.2)'],
+                }]
+            },
+        })
+        var ctx4 = document.getElementById("myChart4");
+        var myChart = new Chart(ctx4, {
+            type: 'polarArea',
+            data: {
+                labels:[place1,place2,place3,place4,place5],
+                datasets: [{
+                    label: ["인기놀이 시설"],
+                    data: [place_top1,place_top2,place_top3,place_top4,place_top5],
+                    backgroundColor: [
                            'rgba(255, 99, 132, 0.2)',
                            'rgba(255, 205, 86, 0.2)',
                            'rgba(75, 192, 192, 0.2)',
                            'rgba(54, 162, 235, 0.2)',
                            'rgba(75, 132, 122, 0.2)'
                            ],
-                   }]
-           },
-   })
-   var ctx5 = document.getElementById("myChart5");
-   var myChart = new Chart(ctx5, {
-           type: 'doughnut',
-           data: {
-           labels: [flo1,flo2,flo3,flo4],
-           datasets: [{
-                   label: ["바닥재별"],
-                   data: [flov1,flov2,flov3,flov4],
-                   backgroundColor: [
-                   'rgba(255, 99, 132, 0.2)',
-                   'rgba(255, 205, 86, 0.2)',
-                   'rgba(75, 192, 192, 0.2)',
-                   'rgba(54, 162, 235, 0.2)'
-                   ],
-           }]
-           },
-   })
-   }
-   cha();
-
-   $("#guselect").change(function() {
-               var su = $("#guselect option:selected").val()
-       $.ajax({
-           url:'/sival/',
-           type:"POST",
-           data:{'su':su},
-           dataType:'json',
-           success: function(msg){
-               var obj = JSON.parse(msg)
-               var beo = obj.bPer
-               var ceo = obj.cPer
-               var mdo = obj.md
-               var ndo = obj.nd
-               var ouo = obj.ou
-               var ioo = obj.io
-                   var c1o = toString(obj.c1)
-                   var c2o = toString(obj.c2)
-                   var c3o = toString(obj.c3)
-                   var c4o = toString(obj.c4)
-                   var c5o = toString(obj.c5)
-                   var cv1o = obj.cv1
-                   var cv2o = obj.cv2
-                   var cv3o = obj.cv3
-                   var cv4o = obj.cv4
-                   var cv5o = obj.cv5
-                   var flo1o = toString(obj.flo1)
-                   var flo2o = toString(obj.flo2)
-                   var flo3o = toString(obj.flo3)
-                   var flo4o = toString(obj.flo4)
-                   var flov1o = obj.flov1
-                   var flov2o = obj.flov2
-                   var flov3o = obj.flov3
-                   var flov4o = obj.flov4
-               var siva = obj.siva
-
-               $('#sis').html(siva);
-               cha(bPer=beo,cPer=ceo,md=mdo,nd=ndo,ou=ouo,io=ioo,c1=c1o,c2=c2o,c3=c3o,c4=c4o,c5=c5o,cv1=cv1o,cv2=cv2o,cv3=cv3o,cv4=cv4o,cv5=cv5o,flo1=flo1o,flo2=flo2o,flo3=flo3o,flo4=flo4o,flov1=flov1o,flov2=flov2o,flov3=flov3o,flov4=flov4o);
-                                       }
-               ,  error:function(request,status,error){
-                       alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-               }
-           });
-
-       })
-
-   })
+                        }]
+                    },
+                })
+                var ctx5 = document.getElementById("myChart5");
+                var myChart = new Chart(ctx5, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [flo1,flo2,flo3,flo4],
+                        datasets: [{
+                            label: ["바닥재별"],
+                            data: [flo_count1,flo_count2,flo_count3,flo_count4],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)'
+                            ],
+                        }]
+                    }
+                })
+            }
+            cha();
+            $("#guselect").change(function() {
+                var select_si = $("#guselect option:selected").val()
+                $.ajax({
+                    url:'/child/',
+                    type:"POST",
+                    data:{'select_si':select_si},
+                    dataType:'json',
+                    success: function(msg){
+                        var obj = JSON.parse(msg)
+                        var minRatio = obj.min_ratio
+                        var gongRatio = obj.gong_ratio
+                        var dutyCount = obj.duty_count
+                        var nondutyCount = obj.nonduty_count
+                        var outCount = obj.out_count
+                        var inCount = obj.in_count
+                        var placeOne = toString(obj.place1)
+                        var placeTwo = toString(obj.place2)
+                        var placeThr = toString(obj.place3)
+                        var placeFour = toString(obj.place4)
+                        var placeFive = toString(obj.place5)
+                        var placeTop1 = obj.place_top1
+                        var placeTop2 = obj.place_top2
+                        var placeTop3 = obj.place_top3
+                        var placeTop4 = obj.place_top4
+                        var placeTop5 = obj.place_top5
+                        var floOne = toString(obj.flo1)
+                        var floTwo = toString(obj.flo2)
+                        var floThr = toString(obj.flo3)
+                        var floFour = toString(obj.flo4)
+                        var floCount1 = obj.flo_count1
+                        var floCount2 = obj.flo_count2
+                        var floCount3 = obj.flo_count3
+                        var floCount4 = obj.flo_count4
+                        var sidos = obj.sidos
+                        
+                        $('#sis').html(sidos);
+                        cha(min_ratio = minRatio, gong_ratio = gongRatio, duty_count = dutyCount, nonduty_count = nondutyCount,
+                        out_count=outCount, in_count=inCount,
+                        place1 = placeOne, place2 = placeTwo, place3 = placeThr, place4 = placeFour, place5 = placeFive,
+                        place_top1 = placeTop1, place_top2 = placeTop2, place_top3 = placeTop3, place_top4 = placeTop4, place_top5 = placeTop5,
+                        flo1 = floOne, flo2 = floTwo, flo3 = floThr, flo4 = floFour,
+                        flo_count1 = floCount1, flo_count2 = floCount2, flo_count3 = floCount3, flo_count4 = floCount4);
+                    }
+                    , error : function(request,status,error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
+            })
+        })
 </script>
 </head>
 <body>
    <select id="guselect">
-     {% for i in guList %}
+       {% for i in guList %}
        <option id='guname' value="{{i}}">{{i}}</option>
-     {% endfor %}
-   </select>
-   <!-- <div id='sis'></div> -->
+       {% endfor %}
+    </select>
    <div id="s1">
        <div id='t1' style="font-weight: bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">민간,공공시설분포</div>
        <div id="chart1">
