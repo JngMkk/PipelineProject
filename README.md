@@ -28,7 +28,8 @@
 
 - 데이터 정의서
 
-![image](https://user-images.githubusercontent.com/87686562/193469670-3a57a33d-5c34-43d0-93cd-7a0e1485ba20.png)
+![image](https://user-images.githubusercontent.com/87686562/193470136-f7fced64-8b08-4616-812a-b8e7111be9e9.png)
+
 
 ---
 
@@ -36,7 +37,7 @@
 
 - ERD
 
-![image](https://user-images.githubusercontent.com/87686562/193469708-7de8611f-1a6e-4a3d-8aa4-cb187427f2bd.png)
+![image](https://user-images.githubusercontent.com/87686562/193470171-ca658ef0-bc74-416c-bc9b-7e7c59811d57.png)
 
 
 
